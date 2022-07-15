@@ -1,13 +1,13 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-<div class="container ">
-<v-footer class="d-flex justify-center"> 
-      <v-card flat tile class="black lighten-1 white--text text-center">
+  <div class="d-flex justify-center align-center">
+    <v-footer id="footer">
+      <v-card id="card">
         <v-card-text>
           <v-btn
             v-for="icon in icons"
             :key="icon"
-            class="mx-4 white--text"
+            class="mx-4 black--text"
             icon
           >
             <v-icon size="24px">
@@ -16,14 +16,14 @@
           </v-btn>
         </v-card-text>
 
-        <v-divider class="white"></v-divider>
+        <v-divider class="black"></v-divider>
 
-        <v-card-text class="white--text">
+        <v-card-text class="d-flex justify-center black--text">
           {{ new Date().getFullYear() }} — <strong>Alumiô Bazar</strong>
         </v-card-text>
       </v-card>
     </v-footer>
-</div>
+  </div>
 </template>
 
 <script>
@@ -36,3 +36,20 @@ export default {
   }),
 };
 </script>
+
+<style>
+#card {
+  color: black;
+  width: 100%;
+  height: 100%;
+}
+
+#footer {
+  background-color: white;
+  color: #fff;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  justify-content: center;
+}
+</style>

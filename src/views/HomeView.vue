@@ -1,14 +1,7 @@
 <template>
   <div>
-    <header></header>
-
-    <v-main>
-      <form-conheceu />
-    </v-main>
-
-    <v-footer>
-      <rodape />
-    </v-footer>
+    <form-conheceu />
+    <rodape />
   </div>
 </template>
 
