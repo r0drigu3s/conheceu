@@ -22,12 +22,12 @@
       <v-select
         v-model="select"
         :items="items"
-        :rules="[(v) => !!v || 'Preencha o campo Item']"
-        label="Item"
+        :rules="[(v) => !!v || 'Preencha o campo Plataforma']"
+        label="Plataforma"
         required
       ></v-select>
 
-      <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
+      <v-btn :disabled="!valid" color="success" class="mr-4" @click="submit">
         Enviar
       </v-btn>
 
@@ -44,10 +44,7 @@ export default {
   data: () => ({
     valid: true,
     name: "",
-    nameRules: [
-      (v) => !!v || "Preencha o campo Nome",
-      (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
-    ],
+    nameRules: [(v) => !!v || "Preencha o campo Nome"],
     email: "",
     emailRules: [
       (v) => !!v || "Preencha o campo Email",
@@ -59,9 +56,24 @@ export default {
   }),
 
   methods: {
-    validate() {
+    submit() {
+      const axios = require("axios").default;
+      const data = {
+        name: this.name,
+        email: this.email,
+        plataforma: this.select,
+      };
+
       if (this.$refs.form.validate()) {
-        alert("Enviado!");
+        axios
+          .post("http://127.0.0.1:8000/api/admin/formulario", data)
+          .then(() => {
+            alert("Formulário enviado com sucesso!");
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+
         this.$refs.form.reset();
       } else {
         alert("Preencha os campos necessários!");
