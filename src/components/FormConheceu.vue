@@ -50,7 +50,7 @@ export default {
     ],
     email: "",
     emailRules: [
-      (v) => !!v || "E-mail is required",
+      (v) => !!v || "Preencha o campo Email",
       (v) => /.+@.+\..+/.test(v) || "Email informado não é válido",
     ],
     select: null,
@@ -60,13 +60,15 @@ export default {
 
   methods: {
     validate() {
-      this.$refs.form.validate();
+      if (this.$refs.form.validate()) {
+        alert("Enviado!");
+        this.$refs.form.reset();
+      } else {
+        alert("Preencha os campos necessários!");
+      }
     },
     reset() {
       this.$refs.form.reset();
-    },
-    resetValidation() {
-      this.$refs.form.resetValidation();
     },
   },
 };
