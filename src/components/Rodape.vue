@@ -7,7 +7,7 @@
           <v-btn
             v-for="icon in icons"
             :key="icon"
-            class="mx-4 black--text"
+            class="mx-4 white--text"
             icon
           >
             <v-icon size="24px">
@@ -18,7 +18,7 @@
 
         <v-divider class="black"></v-divider>
 
-        <v-card-text class="d-flex justify-center black--text">
+        <v-card-text class="d-flex justify-center white--text">
           {{ new Date().getFullYear() }} — <strong>Alumiô Bazar</strong>
         </v-card-text>
       </v-card>
@@ -42,6 +42,11 @@ export default {
   color: black;
   width: 100%;
   height: 100%;
+}
+
+#card {
+  background-color: #872d09;
+  color: white;
 }
 
 #footer {

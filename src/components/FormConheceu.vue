@@ -1,44 +1,37 @@
 <!-- eslint-disable vue/multi-word-component-names -->
 <template>
-  <v-container class="d-flex justify-center">
+  <v-container id="vContainer" class="d-flex justify-center">
     <v-form ref="form" v-model="valid" lazy-validation>
+      <h1>Como nos conheceu?</h1>
+      <br /><br /><br /><br /><br />
       <v-text-field
         v-model="name"
-        :counter="10"
+        :counter="100"
         :rules="nameRules"
-        label="Name"
+        label="Nome"
         required
       ></v-text-field>
 
       <v-text-field
         v-model="email"
         :rules="emailRules"
-        label="E-mail"
+        label="Email"
         required
       ></v-text-field>
 
       <v-select
         v-model="select"
         :items="items"
-        :rules="[(v) => !!v || 'Item is required']"
+        :rules="[(v) => !!v || 'Preencha o campo Item']"
         label="Item"
         required
       ></v-select>
 
-      <v-checkbox
-        v-model="checkbox"
-        :rules="[(v) => !!v || 'You must agree to continue!']"
-        label="Do you agree?"
-        required
-      ></v-checkbox>
-
       <v-btn :disabled="!valid" color="success" class="mr-4" @click="validate">
-        Validate
+        Enviar
       </v-btn>
 
-      <v-btn color="error" class="mr-4" @click="reset"> Reset Form </v-btn>
-
-      <v-btn color="warning" @click="resetValidation"> Reset Validation </v-btn>
+      <v-btn color="error" class="mr-4" @click="reset"> Limpar </v-btn>
     </v-form>
   </v-container>
 </template>
@@ -52,16 +45,16 @@ export default {
     valid: true,
     name: "",
     nameRules: [
-      (v) => !!v || "Name is required",
+      (v) => !!v || "Preencha o campo Nome",
       (v) => (v && v.length <= 10) || "Name must be less than 10 characters",
     ],
     email: "",
     emailRules: [
       (v) => !!v || "E-mail is required",
-      (v) => /.+@.+\..+/.test(v) || "E-mail must be valid",
+      (v) => /.+@.+\..+/.test(v) || "Email informado não é válido",
     ],
     select: null,
-    items: ["Item 1", "Item 2", "Item 3", "Item 4"],
+    items: ["Facebook", "Instagram", "Outros"],
     checkbox: false,
   }),
 
@@ -78,3 +71,13 @@ export default {
   },
 };
 </script>
+
+<style>
+#vContainer {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 50px;
+  text-align: center;
+}
+</style>
