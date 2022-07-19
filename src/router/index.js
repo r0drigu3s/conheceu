@@ -2,18 +2,6 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import HomeView from '../views/HomeView.vue';
 
-// const axios = require('axios').default;
-// axios.defaults.baseURL = 'http://127.0.0.1:8000/';
-
-// axios
-//   .post('http://127.0.0.1:8000/api/admin/products/create')
-//   .then(response => {
-//     console.log(response);
-//   }).catch(error => {
-//     console.log(error);
-//   });
-
-
 Vue.use(VueRouter);
 
 const routes = [

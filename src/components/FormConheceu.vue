@@ -3,7 +3,7 @@
   <v-container id="vContainer" class="d-flex justify-center">
     <v-form ref="form" v-model="valid" lazy-validation>
       <h1>Como nos conheceu?</h1>
-      <br /><br /><br /><br /><br />
+      <br /><br /><br />
       <v-text-field
         v-model="name"
         :counter="100"
@@ -66,12 +66,13 @@ export default {
 
       if (this.$refs.form.validate()) {
         axios
-          .post("http://127.0.0.1:8000/api/admin/formulario", data)
+          .post("http://127.0.0.1:8000/api/formulario", data)
           .then(() => {
-            alert("Formulário enviado com sucesso!");
+            alert("Opa, deu tudo certo! Formulário enviado com sucesso!");
           })
           .catch((error) => {
             console.log(error);
+            alert("Ops, algo deu errado! Preencha o formulário corretamente.");
           });
 
         this.$refs.form.reset();
@@ -79,6 +80,7 @@ export default {
         alert("Preencha os campos necessários!");
       }
     },
+
     reset() {
       this.$refs.form.reset();
     },
@@ -91,7 +93,7 @@ export default {
   align-items: center;
   display: flex;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 20px;
   text-align: center;
 }
 </style>
